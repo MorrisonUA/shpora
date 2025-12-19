@@ -503,8 +503,12 @@
                 <div class="ticket-content">${ticket.content}</div>
             `;
             card.querySelector('.ticket-header').addEventListener('click', () => {
-                document.querySelectorAll('.ticket-card.active').forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
+                if (card.classList.contains('active')) {
+                    card.classList.remove('active');
+                } else {
+                    document.querySelectorAll('.ticket-card.active').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                }
             });
             container.appendChild(card);
 
